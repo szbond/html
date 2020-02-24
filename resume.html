@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name = "description" content = " resume"/>
+	<meta name = "keywords" content="resume" />
+	<title>Resume</title>
+	<meta name = "author" content="szbond" />
+	<meta name = "robots" content="none"/>
+	<link rel="stylesheet" type="text/css" href="re/style/myResumStyle.css">
+	<link rel="stylesheet" type="text/css" href="re/style/animate.css">
+	<script type="text/javascript" src="lib/jquery/3.4.1.min/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript">
+		//curry 阻止连续执行
+				function createClick(handlFunc,ele,listenEle,arg=[]){//参数列表（处理函数，元素类关键字，监听事件（最好不是mouseover））
+									ele = ele;
+
+									listenEle = listenEle;
+									return function(timeout){
+										var timeout = timeout;
+										//var _arg = [].slice.call(arguments)
+										$this =$(this)
+										$(ele).on(listenEle,function(){
+											if ($this.data("timeout")){//多次执行函数将不断clearTimeout，直到setTimeout正常结束，timeoutID被写入data-timeout里
+												clearTimeout($this.data("timeout"));
+											}
+											$this.data("timeout",setTimeout(function(){//把ID写入data-timeout
+												return handlFunc.apply(this,[]);//执行外部函数（即传入的函数）
+											},timeout))
+										});
+									};
+								}//规定具体时间间隔内的监听事件默认只执行一次函数；
+	</script>
+
+</head>
+<body>
+	<div class="d1">
+		<div class="d11">
+			<div class="d11_c">
+			<div class="d111">
+				<a href="https://ikonate.com/"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M5.52 19c.64-2.2 1.84-3 3.22-3h6.52c1.38 0 2.58.8 3.22 3" /><circle cx="12" cy="10" r="3" fill="white"/><circle cx="12" cy="12" r="10" stroke-width="0.5" /></svg></a>
+				
+			</div>
+			
+			<div class="d113">
+
+					<button class = "menue"><svg class="menue_ico"xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+					<div class = "menue_block">
+						<div class="support">
+							<a href="#">支持信息1</a>
+							<a href="#">支持信息2</a>
+						</div>
+						<a href="mailto:szbond@outlook.com">与我联系</a>
+					</div></button>
+					<script type="text/javascript">
+
+						$(".menue_block").data("show","0")
+						var $showMenue = function(){
+							if ($(".menue_block").data("show")==="1")//如果元素显示，执行fadeOut，在data-show写入字符串0，尽量不要用FadeTollgle
+								{
+									$(".menue_block").fadeOut("slow");
+									$(".menue_block").data("show","0");
+
+								}
+							else
+							{
+								$(".menue_block").fadeIn("slow");
+								$(".menue_block").data("show","1");
+							}
+							
+							}
+					
+						$clickMenue = createClick($showMenue, ".menue","click");
+						$clickMenue(50);
+						$(".menue").hover(
+							function(){$(".menue_block").fadeIn("slow");
+								$(".menue_block").data("show","1");},//实现不离开菜单区域即可关闭菜单的方法
+							function(){$(".menue_block").fadeOut("slow");
+								$(".menue_block").data("show","0");});
+						
+
+						
+					</script>
+
+
+			</div>
+			</div>
+			</div>
+		<div class = "d12_a">
+			<div class="d12">
+				<div class = "d121_a">
+
+				<div class="d121 " >
+					<ul>
+						<li id= "liSvg">
+							<svg class ="down_ico"role="img" xmlns="http://www.w3.org/2000/svg" width="48px" height="48px" viewBox="0 0 24 24" aria-labelledby="chevronDownIconTitle" stroke="#DCDCDC" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" fill="none" color="#ffffff">
+							 <title id="chevronDownIconTitle"></title> 
+							 <polyline id="pyL" points="6 10 12 16 18 10"/>
+							</svg>
+						</li>
+						<li>
+							<span style="cursor:pointer"><a  class ="#mePage">基本信息</a></span>
+						</li>
+						<li>
+							<span style="cursor:pointer"><a  class ="#abPage">能力基础</a></span>
+						</li>
+						<li>
+							<span style="cursor:pointer"><a   class ="#dePage">详细经历</a></span>
+						</li>
+						<li>
+							<span style="cursor:pointer"><a   class ="#moPage">了解更多</a></span>
+						</li>
+					</ul>
+				</div>
+				<script type="text/javascript">
+					$(".d121 a").each(function()
+						{
+
+							$(this).click(slowMove);
+						});
+					function slowMove(){
+						var $linkName = $(this).attr("class");
+						var $linkTo = $linkName.slice(1);
+						
+						var $linkTi =  $("*[name="+$linkTo+"]").offset().top;
+						//console.log($linkTi);
+						$("html,body").animate({scrollTop:$linkTi},600);
+					}
+				</script>
+				<div class="table_bar">
+					<div class="side_bar1"><p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-target"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg></p></div>
+					<div class="side_bar2"><p></p></div>
+					<div class="side_bar3"><p></p></div>
+					<div class="side_bar4"><p></p></div>
+				</div>
+				<script type="text/javascript">
+					
+						$(document).ready(function()
+							{
+								function createHide(handlFunc, args=[])
+								{
+		
+									return function(timeout)//目标函数
+									{
+										handlFunc.apply(this,[]);//页面刷新
+
+										$this = $(this);
+										$this.resize(function(){;
+
+										if ($this.data("resizeTimeout"))
+										{
+											clearTimeout($this.data("resizeTimeout"));
+										}
+										var timeoutID = setTimeout(function()
+											{
+												return handlFunc.apply(this,[]);//结果函数
+											},timeout);
+										$this.data("resizeTimeout",timeoutID);})
+
+										
+
+									};
+
+								}
+								
+								hideBar =function()
+								{
+									if ($(window).width()<800)
+									{
+										$(".table_bar").fadeOut();
+									}
+									else
+									{
+										$(".table_bar").fadeIn();
+									}
+									
+								};
+								hideTable = createHide(hideBar)//也可借由顶端的柯里化函数实现
+								hideTable(800);
+							});
+						
+						
+						
+						
+				</script>
+				</div>
+				
+
+				<div class="d122">
+
+					
+					<a name="mePage"></a>
+					<div class = "d1222">
+						<div class="d1222_a" ><div class ="d1222_b">
+							<div class="d1222_banner"><div>
+								<h1 class="bannerH1">RESUME</h1>
+							</div>
+							<p class="bannerTxt1">click to show searching box<br/>
+								<!--
+								<div class = "bannerIco" ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#c0ebd7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-down">
+							<polyline id = "bIPL1"points="7 13 12 18 17 13">
+							</polyline>
+							<polyline id = "bIPL2" points="7 6 12 11 17 6">
+							</polyline></svg></div>--></p>
+								
+						</div>
+							<div class="d1222_szbond">
+								<svg class="closeSvg" xmlns="http://www.w3.org/2000/svg" width = "48px" height="48px" viewBox="0 0 24 24" stroke="#2c4f54",stroke-width="2px">
+									<circle cx="12" cy="12" r="5" fill="none"></circle>
+									<line class="line1" x1="9" y1="9" x2="15" y2="15"></line>
+									<line x1="9" y1="15" x2="15" y2="9" stroke-width="0.5px"></line>
+								</svg>
+								<form name = "search" action="search.php"method="post">
+									<input class="input_box"type="text" name="search_text"placeholder="searching here">
+									<input calss="input_btn"type="submit" value="search">
+								</form>
+							
+							</div>
+						</div></div>
+						<script type="text/javascript">
+							$(document).ready(function(){
+								$(".d1222_szbond").hide();
+								$(".input_box").focus(function(){
+									$(this).addClass("bigBorder")//输入框获得焦点，加粗边框
+								});
+								$(".input_box").blur(function(){
+									$(this).removeClass("bigBorder")//失去焦点
+								});
+
+								
+								
+								function fade2(){
+									$(".d1222_szbond").fadeToggle("slow");
+									$(".bannerTxt1").fadeToggle("slow");
+									$(".closeSvg").toggleClass("ZIn");}
+								function Svg(){
+									$(".d1222_banner").removeClass("backUp");
+									fade2();
+									$(".bannerH1").toggleClass("fadeH1");
+								}
+
+								function Banner(){
+									
+									$(".bannerTxt1").fadeToggle("slow")//文字消失
+									
+									$(".d1222_banner").toggleClass("backUp");//banner变短
+									
+									$(".closeSvg").removeClass("ZIn");//搜索关闭框加粗
+									$(".d1222_szbond").fadeToggle("slow");//搜索框消失
+									$(".bannerH1").toggleClass("fadeH1");//标题变色
+								}
+								closeSvg = createClick(Svg,".closeSvg","click");
+								closeSvg(300);
+								closeBanner = createClick(Banner,".d1222_banner","click");
+								closeBanner(100);
+								$bIPL1=$("#bIPL1");	
+								$bIPL2=$("#bIPL2");
+								
+								
+								
+											
+								
+							});
+						</script>
+						
+						<div class="basic">
+
+							<div class="myMess">
+								<div><p>姓名 </p><p>施正鹏</p></div>
+								<div><p>邮箱 </p><p>szbond@outlook.com</p></div>
+								<div><p>求职意向 </p><p>策划设计</p></div>
+					
+							</div>
+							<div class="myMess">
+								<div><p>性别/年龄 </p><p>男/23</p></div>
+								<div><p>个人主页</p><p><a class="myPL" href="http://www.szbond.artstation.com">szbond.artstation.com</p></a>
+								</div>
+								<div><p>毕业院校 </p><p>华中农业大学</p></div>
+
+								<script type="text/javascript">
+									$(document).ready(function(){
+										$(".myPL").click(function(){
+											alert("即将转到外网，请确保网络条件")
+										})
+									})
+								</script>
+								
+								
+								
+							</div>
+							
+							<div class="myMess">
+								<div><p>联系方式 </p><p>***********</p></div>
+								
+								
+								<div><p>毕业时间 </p><p>2020-06-30</p></div>
+								<div><p>学历专业 </p><p>应用化学本科</p></div>
+															
+							</div>
+							
+						</div>
+						<a name="abPage"></a>
+						<div class="ability">
+							<div class="ab_con">
+								<div class="ds">
+								<div class="ds1"><p>技能</p></div>
+								<div class="ds2">
+									<p>Photoshop（绘图）Office（基本文字工作  </p>
+									<p>Python/C(C++)/MTML/css/JavaScript/PHP/数据库 (基础)</p>
+								</div>
+								</div>
+								<div class="ds">
+								<div class="ds1"><p>选修课程</p></div><div class="ds2">
+									<p class="tese">文理基础 专业基础 通识选修</p></div>
+								</div>
+								<div class="ds">
+								<div class="ds1"><p>相关经历</p></div><div class="ds2">
+									<p>对地域依赖性不强。对事实类写作，流程，结果展示有较强的文字图形组织排版能力。</p>
+									<p>对不同领域有较强的求知，学习能力。对数据存储，处理，展示皆有涉猎。</p></div>
+								</div>
+
+								<div class="ds">
+								<div class="ds1"><p>优点：</p></div><div class="ds2">
+									<p>信息简化 广泛涉域 视觉元素组合 美术 排版 web前端</p></div>
+								</div>
+								
+         						
+							</div>
+							<div class="ab_de">
+								
+								<div class="ds">
+								<div class="ds1"><p>文字编排</p></div><div class="ds2">
+									<p>基本文字工作静态文本展示，表格处理，流程图设计，基本图形组合，表达。</p></div>
+								</div>
+								
+								<div class="ds">
+								<div class="ds1"><p>绘图</p></div><div class="ds2">
+									<p>写实性绘画，基本元素组合，美术资源绘制。</p></div>
+								</div>
+								<div class="ds">
+								<div class="ds1"><p>编程</p></div>
+									<div class="ds2">
+									<p>基础Linux操作，基本后台python代码，c代码，PHP代码，数据库交流，前端HTML文本，markdown文本，css基本样式，JavaScript脚本代码。</p>
+									<p>构建基础服务器（数据库-PHP）——客户端（HTML-css-JavaScript）交流框架。</p></div>
+								</div>
+								<div class="ds">
+								
+								<div class="ds1"><p>专业与其他</p></div><div class="ds2">
+									<p>化学本科，实验操作，记录撰写，应用性写作，审美与设计 外文翻译。</p></div>
+								</div>
+								
+							
+
+							</div>
+						</div>
+						<a name="dePage"></a>
+						<div class="detail">
+								
+								<div class="ds">
+									<div class = "ds1"><p>专业成绩</p></div>
+									<div class="ds2"><p>GPA前50%，无不合格记录</p></div></div>
+								<div class="ds">
+									<div class = "ds1"><p>2016</p></div>
+									<div class="ds2"><p>就读华中农业大学</p></div></div>							
+								<div class="ds">
+									<div class = "ds1"><p>2017</p></div>
+									<div class="ds2">
+										<p>开始补充素描基础，参加暑期实践，在小组里负责文字工作，于院公众号发布。 </p>
+										<p>开始接触外语论文翻译，独立完成多次课程任务，ppt展示，主题影片展示和其他。 </p>
+										<p>英语四级成绩，516（205+171+140）</p></div></div>
+  								<div class="ds">
+  									<div class = "ds1"><p>2018</p></div>
+  									<div class="ds2">
+  										<p>随校外出宜昌兴发专业实习 开始个人创作 </p>
+										<p>适应编程语言，自学c语言CCF认证 150/500 python</p></div></div>
+								
+									
+								
+								<div class="ds">
+									<div class = "ds1"><p>2019</p></div>
+									<div class="ds2"><p>专业毕业设计，个人作品集整理，求职</p></div></div>			
+								<div class="ds">
+									<div class = "ds1"><p>2020</p></div>
+									<div class="ds2"><p>接触前端语言</p></div></div>
+								
+								
+								<div class="ds"><div class = "ds1"><p>未来发展规划</p></div><div class="ds2"><p>从事相关游戏或影视等视觉策划工作，提高个人综合能力。独立完成体系完善的作品集。</p></div></div>
+								
+						</div>
+						<script type="text/javascript">
+							$(document).ready(function(){
+								
+	
+								
+							});
+						</script>
+						<a name="moPage"></a>
+						<div class="learnMore">
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="d13">
+			<svg src = "re/pic/svg/bar.svg"></svg>
+			<p class="cen_sm_thin_txt">All Content © szbond </p><p>元素显示不完全请使用chrome或更新版IE浏览器打开</p>
+		</div>
+		<script type="text/javascript">
+			$(".ds1 p").addClass("bigSize");
+			var $part = ($(".ab_con,.ab_de,.detail "));
+			
+			$part.css({"borderBottom":"1px inset"});
+			
+		</script>
+		
+
+		
+	</div>
+	
+</body>
+</html>
